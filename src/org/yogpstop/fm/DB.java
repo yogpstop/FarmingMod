@@ -1,14 +1,12 @@
 package org.yogpstop.fm;
 
-import java.util.HashMap;
-
 import net.minecraft.world.World;
 
 public abstract class DB {
-    private static HashMap<String, Integer> items = new HashMap<String, Integer>();
-    private static HashMap<String, Integer> blocks = new HashMap<String, Integer>();
-    protected static HashMap<Integer, ItemMeta> ims = new HashMap<Integer, ItemMeta>();
-    protected static HashMap<Integer, BlockMeta> bms = new HashMap<Integer, BlockMeta>();
+    private static NoNullTreeMap<String, Integer> items = new NoNullTreeMap<String, Integer>(-1);
+    private static NoNullTreeMap<String, Integer> blocks = new NoNullTreeMap<String, Integer>(-1);
+    protected static NoNullTreeMap<Integer, ItemMeta> ims = new NoNullTreeMap<Integer, ItemMeta>(ItemMeta.defaultValue);
+    protected static NoNullTreeMap<Integer, BlockMeta> bms = new NoNullTreeMap<Integer, BlockMeta>(BlockMeta.defaultValue);
 
     private static int currentItemMetadata = 1;
     private static int currentBlockMetadata = 1;
@@ -20,7 +18,7 @@ public abstract class DB {
     }
 
     public static void addBlock(BlockMeta bm) {
-        blocks.put(bm.getUnlocalizedName(), currentBlockMetadata);
+        blocks.put(bm.getName(), currentBlockMetadata);
         bms.put(currentBlockMetadata, bm);
         currentBlockMetadata++;
     }

@@ -10,6 +10,7 @@ public class BlockCookingTable extends Block {
 	public BlockCookingTable(int i) {
 		super(i, Material.iron);
 		setCreativeTab(FarmingMod.tabCookwares);
+		setUnlocalizedName("cookingTable");
 	}
 
 	@Override

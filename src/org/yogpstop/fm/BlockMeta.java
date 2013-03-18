@@ -6,14 +6,16 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class BlockMeta extends Block {
+public class BlockMeta {
+    public static final BlockMeta defaultValue = new BlockMeta();
+
+    private String name;
     // environment
     private ArrayList<Short> plantTo;
     private boolean hasWater;
@@ -30,17 +32,17 @@ public class BlockMeta extends Block {
     private ArrayList<Drop> drops;
     private byte pickedID;
 
-    public BlockMeta(int par1, Material par3Material) {
-        super(par1, par3Material);
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1F, 0.25F, 1F);
+    public BlockMeta() {
         // TODO
     }
 
+    public String getName() {
+        return name;
+    }
+
     // countPer20sec// TODO
-    @Override
     public void updateTick(World world, int x, int y, int z, Random random) {}
 
-    @Override
     public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> a = new ArrayList<ItemStack>();
         for (Drop d : drops) {
@@ -59,51 +61,42 @@ public class BlockMeta extends Block {
         return false;
     }
 
-    @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int bID) {
-        if (!checkBlock(world, x, y, z, false)) {
-            dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-        }
+    public boolean onNeighborBlockChange(World world, int x, int y, int z, int bID) {
+        if (!checkBlock(world, x, y, z, false))
+            return false;
+        return true;
     }
 
-    @Override
     public int getRenderType() {
         return renderType;
     }
 
-    @Override
     public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
         return null;// TODO
     }
 
-    @Override
     public boolean canPlaceBlockAt(World world, int x, int y, int z) {
         if (checkBlock(world, x, y, z, true)) { return true; }
         return false;
     }
 
-    @Override
     public boolean canBlockStay(World world, int x, int y, int z) {
         if (checkBlock(world, x, y, z, false)) { return true; }
         return false;
     }
 
-    @Override
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
         return null;
     }
 
-    @Override
     public boolean isOpaqueCube() {
         return false;
     }
 
-    @Override
     public boolean renderAsNormalBlock() {
         return false;
     }
 
-    @Override
     @SideOnly(Side.CLIENT)
     public int idPicked(World par1World, int x, int y, int z) {
         return pickedID;

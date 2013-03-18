@@ -20,6 +20,7 @@ public class Blocks extends Block {
 		this.setHardness(0.0F);
 		this.setStepSound(soundGrassFootstep);
 		this.disableStats();
+		this.setUnlocalizedName("");
 	}
 
 	@Override

@@ -15,6 +15,12 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class ItemMeta {
+    public static final ItemMeta defaultValue = new ItemMeta();
+
+    private ItemMeta() {
+        ItemBase("default",(byte) 64,"default");
+    }
+
     public ItemMeta(HashMap<String, String> data) {
         if (!data.containsKey("stacksize"))
             data.put("stacksize", "64");
