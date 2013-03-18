@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class Blocks extends Block {
@@ -19,7 +20,6 @@ public class Blocks extends Block {
 		this.setHardness(0.0F);
 		this.setStepSound(soundGrassFootstep);
 		this.disableStats();
-		this.setRequiresSelfNotify();
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class Blocks extends Block {
 	}
 
 	@Override
-	public int getBlockTextureFromSideAndMetadata(int side, int meta) {
-		return 0;
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		return null;
 	}
 
 	@Override

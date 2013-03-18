@@ -9,7 +9,6 @@ public class BlockCookingTable extends Block {
 
 	public BlockCookingTable(int i) {
 		super(i, Material.iron);
-		blockIndexInTexture = 22;
 		setCreativeTab(FarmingMod.tabCookwares);
 	}
 
