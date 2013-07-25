@@ -9,12 +9,12 @@ public final class NewCreativeTabs extends CreativeTabs {
 
 	public NewCreativeTabs(String label, int Aitemindex) {
 		super(label);
-		itemindex = Aitemindex;
+		this.itemindex = Aitemindex;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex() {
-		return itemindex;
+		return this.itemindex;
 	}
 }

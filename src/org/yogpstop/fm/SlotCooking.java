@@ -12,8 +12,7 @@ public class SlotCooking extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack is) {
-		if (!(is.getItem() instanceof Items))
-			return false;
+		if (!(is.getItem() instanceof Items)) return false;
 		return DB.isCookware(is.getItemDamage());
 	}
 

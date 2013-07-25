@@ -24,18 +24,15 @@ public class Blocks extends Block {
 	}
 
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random) {
-	}
+	public void updateTick(World world, int x, int y, int z, Random random) {}
 
 	@Override
-	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y,
-			int z, int metadata, int fortune) {
+	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 		return null;
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int bID) {
-	}
+	public void onNeighborBlockChange(World world, int x, int y, int z, int bID) {}
 
 	@Override
 	public int getRenderType() {
@@ -43,7 +40,7 @@ public class Blocks extends Block {
 	}
 
 	@Override
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return null;
 	}
 
@@ -58,8 +55,7 @@ public class Blocks extends Block {
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x,
-			int y, int z) {
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
 		return null;
 	}
 

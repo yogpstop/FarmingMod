@@ -30,19 +30,17 @@ public class TileCooking extends TileEntity implements IInventory {
 				this.chestContents[par1] = null;
 				this.onInventoryChanged();
 				return var3;
-			} else {
-				var3 = this.chestContents[par1].splitStack(par2);
-
-				if (this.chestContents[par1].stackSize == 0) {
-					this.chestContents[par1] = null;
-				}
-
-				this.onInventoryChanged();
-				return var3;
 			}
-		} else {
-			return null;
+			var3 = this.chestContents[par1].splitStack(par2);
+
+			if (this.chestContents[par1].stackSize == 0) {
+				this.chestContents[par1] = null;
+			}
+
+			this.onInventoryChanged();
+			return var3;
 		}
+		return null;
 	}
 
 	@Override
@@ -51,17 +49,15 @@ public class TileCooking extends TileEntity implements IInventory {
 			ItemStack var2 = this.chestContents[par1];
 			this.chestContents[par1] = null;
 			return var2;
-		} else {
-			return null;
 		}
+		return null;
 	}
 
 	@Override
 	public void setInventorySlotContents(int par1, ItemStack par2ItemStack) {
 		this.chestContents[par1] = par2ItemStack;
 
-		if (par2ItemStack != null
-				&& par2ItemStack.stackSize > this.getInventoryStackLimit()) {
+		if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit()) {
 			par2ItemStack.stackSize = this.getInventoryStackLimit();
 		}
 
@@ -113,28 +109,24 @@ public class TileCooking extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord,
-				this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq(
-				(double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
-				(double) this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq(this.xCoord + 0.5D,
+				this.yCoord + 0.5D, this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@Override
-	public void openChest() {
+	public void openChest() {}
+
+	@Override
+	public void closeChest() {}
+
+	@Override
+	public boolean isInvNameLocalized() {
+		return false;
 	}
 
 	@Override
-	public void closeChest() {
+	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
+		return true;
 	}
-
-    @Override
-    public boolean func_94042_c() {
-        return false;
-    }
-
-    @Override
-    public boolean func_94041_b(int i, ItemStack itemstack) {
-        return true;
-    }
 
 }

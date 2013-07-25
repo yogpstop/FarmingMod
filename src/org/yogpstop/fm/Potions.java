@@ -13,15 +13,14 @@ public class Potions {
 	private float prob;
 
 	public Potions(byte a, byte b, int c, float d) {
-		effect = a;
-		level = b;
-		TickTime = c;
-		prob = d;
+		this.effect = a;
+		this.level = b;
+		this.TickTime = c;
+		this.prob = d;
 	}
 
 	public void usePotion(EntityPlayer e, World world) {
-		if (world.rand.nextFloat() < this.prob)
-			e.addPotionEffect(new PotionEffect(effect, TickTime, level));
+		if (world.rand.nextFloat() < this.prob) e.addPotionEffect(new PotionEffect(this.effect, this.TickTime, this.level));
 	}
 
 	public static ArrayList<Potions> setPotion(String potion) {
@@ -32,7 +31,7 @@ public class Potions {
 			String name = parse[0];
 			byte level = Byte.parseByte(parse[1]);
 			short time = Short.parseShort(parse[2]);
-			float probably = Float.parseFloat(parse[3]) / (float) 100;
+			float probably = Float.parseFloat(parse[3]) / 100;
 			byte type = 0;
 			if (name.equals("movespeed")) {
 				type = 1;
@@ -76,9 +75,7 @@ public class Potions {
 				type = 20;
 
 			}
-			if (type > 0 && time > 0 && level > 0)
-				effects.add(new Potions(type, (byte) (level - 1), time * 20,
-						probably));
+			if (type > 0 && time > 0 && level > 0) effects.add(new Potions(type, (byte) (level - 1), time * 20, probably));
 		}
 		return effects;
 	}

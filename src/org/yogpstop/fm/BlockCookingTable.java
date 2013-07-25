@@ -14,9 +14,7 @@ public class BlockCookingTable extends Block {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z,
-			EntityPlayer entityPlayer, int side, float par7, float par8,
-			float par9) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int side, float par7, float par8, float par9) {
 		if (!world.isRemote) {
 			entityPlayer.openGui(FarmingMod.instance, -1, world, x, y, z);
 		}
