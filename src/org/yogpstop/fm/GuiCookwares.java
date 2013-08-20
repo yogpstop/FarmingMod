@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 public class GuiCookwares extends GuiContainer {
 	boolean isNeedFuel;
 	String itemname;
-	private static final ResourceLocation rl_f = new ResourceLocation("/org/yogpstop/fm/cookwaresf.png");
-	private static final ResourceLocation rl = new ResourceLocation("/org/yogpstop/fm/cookwares.png");
+	private static final ResourceLocation rl_f = new ResourceLocation("yogpstop_fm","textures/gui/cookwaresf.png");
+	private static final ResourceLocation rl = new ResourceLocation("yogpstop_fm","textures/gui/cookwares.png");
 
 	public GuiCookwares(EntityPlayer player, World world, int x, int y, int z, int slot) {
 		super(new ContainerCookwares(player, world, x, y, z, slot));
@@ -29,7 +29,6 @@ public class GuiCookwares extends GuiContainer {
 		this.mc.fontRenderer.drawString(this.itemname, (this.width - this.mc.fontRenderer.getStringWidth(this.itemname)) / 2, 2, 0x404040);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui() {
 		super.initGui();

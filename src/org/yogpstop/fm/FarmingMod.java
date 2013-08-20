@@ -1,6 +1,5 @@
 package org.yogpstop.fm;
 
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Mod;
@@ -8,8 +7,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(name = "FarmingMod", modid = "farmingmod", version = "@VERSION@")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
@@ -17,9 +14,6 @@ public class FarmingMod {
 
 	@Mod.Instance("farmingmod")
 	public static FarmingMod instance;
-
-	@SideOnly(Side.CLIENT)
-	public static final TextureMap texMap = new TextureMap(0x4661726D, "farmingmod/textures/");
 
 	public static BlockCookingTable cookingTable;
 

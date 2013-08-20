@@ -5,7 +5,7 @@ import java.util.Set;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-
 import static org.yogpstop.fm.DB.ims;
 
 public class Items extends Item {
@@ -28,8 +27,15 @@ public class Items extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int par1) {
-		return ims.get(par1).getIcon();
+	public Icon getIconFromDamage(int meta) {
+		return ims.get(meta).getIcon();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister ir) {
+		for (ItemMeta im : ims.values())
+			im.registerIcons(ir);
 	}
 
 	@Override
@@ -62,7 +68,6 @@ public class Items extends Item {
 		return ims.get(is.getItemDamage()).onItemRightClick(is, world, ep);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void getSubItems(int par1, CreativeTabs ct, List list) {
 		Set<Integer> i = ims.keySet();
@@ -91,10 +96,5 @@ public class Items extends Item {
 	@Override
 	public CreativeTabs[] getCreativeTabs() {
 		return new CreativeTabs[] { FarmingMod.tabCookwares, FarmingMod.tabMaterials, FarmingMod.tabPlants, CreativeTabs.tabFood };
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int func_94901_k() {
-		return 0x4661726D;
 	}
 }

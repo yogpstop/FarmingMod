@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -18,12 +18,12 @@ public class ItemMeta {
 	public static final ItemMeta defaultValue = new ItemMeta();
 
 	private ItemMeta() {
-		ItemBase("default", (byte) 64, "default");
+		ItemBase("default", (byte) 64);
 	}
 
 	public ItemMeta(HashMap<String, String> data) {
 		if (!data.containsKey("stacksize")) data.put("stacksize", "64");
-		ItemBase(data.get("name"), Byte.parseByte(data.get("stacksize")), data.get("icon"));
+		ItemBase(data.get("name"), Byte.parseByte(data.get("stacksize")));
 
 		if (data.containsKey("cookware")) {
 			if (!data.containsKey("isneedfuel")) data.put("isneedfuel", "false");
@@ -58,10 +58,9 @@ public class ItemMeta {
 	private byte stackSize;
 	private Icon icon;
 
-	private void ItemBase(String name, byte stacksize, String textureFile) {
+	private void ItemBase(String name, byte stacksize) {
 		this.itemName = name;
 		this.stackSize = stacksize;
-		this.icon = FarmingMod.texMap.registerIcon(textureFile);
 	}
 
 	private boolean needFuel;
@@ -108,6 +107,11 @@ public class ItemMeta {
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon() {
 		return this.icon;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister ir) {
+		ir.registerIcon("yogpstop_fm:user/" + this.itemName);
 	}
 
 	public String getUnlocalizedName() {

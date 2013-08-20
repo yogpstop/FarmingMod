@@ -10,7 +10,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class GuiCooking extends GuiContainer {
-	private static final ResourceLocation rl = new ResourceLocation("/org/yogpstop/fm/cookingtable.png");
+	private static final ResourceLocation rl = new ResourceLocation("yogpstop_fm","textures/gui/cookingtable.png");
 
 	public GuiCooking(EntityPlayer player, World world, int x, int y, int z) {
 		super(new ContainerCooking(player, world, x, y, z));
@@ -24,7 +24,6 @@ public class GuiCooking extends GuiContainer {
 				(this.width - this.mc.fontRenderer.getStringWidth(StatCollector.translateToLocal("container.cooking"))) / 2, 4, 0x404040);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui() {
 		super.initGui();
