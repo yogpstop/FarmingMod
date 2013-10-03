@@ -53,7 +53,7 @@ public class GuiCooking extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.func_110434_K().func_110577_a(rl);
+		this.mc.getTextureManager().bindTexture(rl);
 		int xStart = this.width - this.xSize >> 1;
 		int yStart = this.height - this.ySize >> 1;
 		drawTexturedModalRect(xStart, yStart, 0, 0, this.xSize, this.ySize);

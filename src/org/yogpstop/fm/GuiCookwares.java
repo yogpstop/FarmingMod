@@ -55,9 +55,9 @@ public class GuiCookwares extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		if (this.isNeedFuel) {
-			this.mc.func_110434_K().func_110577_a(rl_f);
+			this.mc.getTextureManager().bindTexture(rl_f);
 		} else {
-			this.mc.func_110434_K().func_110577_a(rl);
+			this.mc.getTextureManager().bindTexture(rl);
 		}
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		int xStart = this.width - this.xSize >> 1;
